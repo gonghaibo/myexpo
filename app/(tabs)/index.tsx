@@ -1,14 +1,16 @@
 import { Stack } from 'expo-router';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from "react-native";
 
 import { ScreenContent } from '~/components/ScreenContent';
+import { DefaultTheme } from "@react-navigation/native/src";
 
 export default function Home() {
   return (
     <>
-      <Stack.Screen options={{ title: 'Tab One' }} />
+      <Stack.Screen options={{ title: '主页11' }} />
       <View style={styles.container}>
-        <ScreenContent path="app/(tabs)/index.tsx" title="Tab One" />
+        <Text className={"text-2xl text-red-500 font-bold"}>hello</Text>
+        {/*<ScreenContent path="app/(tabs)/index.tsx" title="Tab One" />*/}
       </View>
     </>
   );
