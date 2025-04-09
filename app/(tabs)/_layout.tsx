@@ -5,6 +5,7 @@ import { TabBarIcon } from '../../components/TabBarIcon';
 import Calendar from "~/app/(tabs)/calendar";
 import Calculator from "~/app/(tabs)/calculator";
 
+
 export default function TabLayout() {
   return (
     <Tabs
@@ -44,6 +45,14 @@ export default function TabLayout() {
         options={{
           title: '计算器',
           tabBarLabel: '计算器',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="contacts"
+        options={{
+          title: 'contact',
+          tabBarLabel: 'Contact',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />

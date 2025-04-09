@@ -42,14 +42,19 @@ export default function CalendarPage() {
       <View className="w-40 ml-4">
         <Text className="text-base font-semibold mb-2">选择年份</Text>
         <Picker
-          selectedValue={selectedYear}
-          onValueChange={(itemValue) => setSelectedYear(itemValue)}
+          selectedValue={String(selectedYear)}
+          onValueChange={(itemValue) => setSelectedYear(Number(itemValue))}
           style={{ height: 50 }}
         >
           {years.map((year) => (
-            <Picker.Item key={year} label={year.toString()} value={year} />
+            <Picker.Item
+              key={year}
+              label={String(year)}
+              value={String(year)}
+            />
           ))}
         </Picker>
+
 
         <Text className="mt-4 font-semibold mb-2">选择月份</Text>
         <ScrollView>
