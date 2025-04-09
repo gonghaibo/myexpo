@@ -2,6 +2,7 @@
 import '../global.css'; // ✅ 加载 tailwind 的 global 样式
 import { Stack } from 'expo-router';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import 'react-native-url-polyfill/auto';
 
 const queryClient = new QueryClient();
 
