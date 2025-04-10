@@ -112,8 +112,8 @@ export default function ContactsPage() {
         {/*<Button title={'访问通讯录'} onPress={() => handleGetContacts()} />*/}
 
 
-        <View>
-          <Text>已加入igest的朋友</Text>
+        <View className={"py-4 w-full"}>
+          <Text className={"font-bold  left-6"}>People you may know</Text>
           <View>
             {DBfriends.map((friend: { phone: string; nickname: string; avatar: string }) => (
               <Friend
@@ -125,6 +125,13 @@ export default function ContactsPage() {
             ))}
           </View>
         </View>
+        <View className={"w-full px-5 "}>
+          <View className={"p-5 bg-yellow-300 rounded-lg"}>
+            <Text>This list will search for users who have registered igest based on the mobile phone number <Text style={{ textDecorationLine: 'line-through' }}>(Email)</Text> in the address book. It is convenient to add friends.</Text>
+          </View>
+
+        </View>
+
       </View>
     </>
   );
