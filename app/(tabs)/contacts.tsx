@@ -1,4 +1,4 @@
-import { Link, Stack, useRouter } from 'expo-router';
+import { Link, Stack, useFocusEffect, useRouter } from "expo-router";
 import { StyleSheet, View, Text, Button, TouchableOpacity } from 'react-native';
 import * as Contacts from 'expo-contacts';
 import { useMutation } from '@tanstack/react-query';
@@ -50,21 +50,23 @@ export default function ContactsPage() {
   //   }
   // }, []);
 
-  useEffect(() => {
-    const fetchContacts = async () => {
-      const contacts = await getContacts();
-      setUserContacts(contacts);
-      const phoneNumbers = contacts.map((contact) => contact.phoneNumber);
+  useFocusEffect(
+    useCallback(() => {
+      const fetchContacts = async () => {
+        const contacts = await getContacts();
+        setUserContacts(contacts);
+        const phoneNumbers = contacts.map((contact) => contact.phoneNumber);
 
-      if (phoneNumbers.length > 0) {
-        mutate({ phoneNumbers });
-      } else {
-        console.log('未获取到手机号');
-      }
-    };
+        if (phoneNumbers.length > 0) {
+          mutate({ phoneNumbers });
+        } else {
+          console.log('未获取到手机号');
+        }
+      };
 
-    fetchContacts();
-  }, []);
+      fetchContacts();
+    }, [])
+  );
 
   return (
     <>
@@ -129,7 +131,6 @@ export default function ContactsPage() {
           <View className={"p-5 bg-yellow-300 rounded-lg"}>
             <Text>This list will search for users who have registered igest based on the mobile phone number <Text style={{ textDecorationLine: 'line-through' }}>(Email)</Text> in the address book. It is convenient to add friends.</Text>
           </View>
-
         </View>
 
       </View>
