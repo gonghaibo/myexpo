@@ -20,7 +20,7 @@ export default function ContactsPage() {
   >([]);
   const { mutate, isPending } = useMutation({
     mutationFn: async ({ phoneNumbers }: { phoneNumbers: string[] }) => {
-      return await fetch(`http://192.168.50.12:3002/contacts/friends`, {
+      return await fetch(`https://test.key-jack.com/contacts/friends`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
