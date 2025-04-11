@@ -117,9 +117,9 @@ export default function ContactsPage() {
         <View className={"py-4 w-full"}>
           <Text className={"font-bold  left-6"}>People you may know</Text>
           <View>
-            {DBfriends.map((friend: { phone: string; nickname: string; avatar: string }) => (
+            {DBfriends.map((friend: {phone: string; nickname: string; avatar: string }, index) => (
               <Friend
-                key={friend.phone}
+                key={`${friend.phone}-${index}`}
                 avatar={friend.avatar}
                 nickname={friend.nickname}
                 contact_name={getContactNameByPhone(friend.phone)}
