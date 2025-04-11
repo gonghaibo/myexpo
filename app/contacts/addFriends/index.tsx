@@ -21,7 +21,7 @@ export default function Page() {
       <StatusBar style={Platform.OS === 'ios' ? 'dark' : 'auto'} />
       <ScrollView className="h-full w-full space-y-4 p-4">
         {contacts.map(({ name, phoneNumber }: { name: string; phoneNumber: string }) => (
-          <Contact name={name} phoneNumber={phoneNumber} key={name} />
+          <Contact name={name} phoneNumber={phoneNumber} key={`${name}-${phoneNumber}`} />
         ))}
       </ScrollView>
     </>
