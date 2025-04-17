@@ -60,6 +60,7 @@ export default function TabLayout() {
           title: 'contact',
           tabBarLabel: 'Contact',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          headerBackTitle: '',
         }}
       />
     </Tabs>

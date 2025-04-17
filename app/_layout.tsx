@@ -17,9 +17,13 @@ export default function RootLayout() {
       {/*<AppSafeArea>*/}
       <SafeAreaProvider>
         <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }} edges={['top']}>
-          <Stack>
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+          <Stack
+            screenOptions={{
+              headerBackTitleVisible: false, // ✅ 全局关闭返回标题
+            }}
+          >
+            <Stack.Screen name="(tabs)" options={{ headerShown: false, title: '' }} />
+            {/*<Stack.Screen name="modal" options={{ presentation: 'modal' }} />*/}
           </Stack>
         </SafeAreaView>
       </SafeAreaProvider>
