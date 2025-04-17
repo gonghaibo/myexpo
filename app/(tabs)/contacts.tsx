@@ -147,7 +147,7 @@ export const getContacts = async () => {
   }
 
   const { data } = await Contacts.getContactsAsync({
-    fields: [Contacts.Fields.Name, Contacts.Fields.PhoneNumbers],
+    fields: [Contacts.Fields.Name, Contacts.Fields.PhoneNumbers, Contacts.Fields.Emails],
   });
 
   if (!data || data.length === 0) {
@@ -163,8 +163,8 @@ export const getContacts = async () => {
     if (contact.phoneNumbers && contact.phoneNumbers.length > 0) {
       const name = `${contact.firstName ?? ''} ${contact.lastName ?? ''}`.trim();
       const phoneNumber = contact.phoneNumbers[0]?.number?.replace(/\D/g, '') ?? '';
-
-      return name && phoneNumber ? [{ name, phoneNumber }] : [];
+      const email = contact.emails?.[0]?.email ?? null;
+      return name && phoneNumber ? [{ name, phoneNumber, email }] : [];
     }
     return [];
   });

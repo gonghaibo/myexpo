@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <Stack.Screen options={{ title: '主页11' }} />
       <View style={styles.container}>
-        <Text className={"text-2xl text-red-500 font-bold"}>hello</Text>
+        <Text className={"text-2xl text-red-500 font-bold dark:text-green-500"}>hello</Text>
         {/*<ScreenContent path="app/(tabs)/index.tsx" title="Tab One" />*/}
       </View>
     </>
