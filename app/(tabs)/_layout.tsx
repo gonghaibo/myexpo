@@ -2,12 +2,8 @@ import { Link, Tabs } from 'expo-router';
 
 import { HeaderButton } from '../../components/HeaderButton';
 import { TabBarIcon } from '../../components/TabBarIcon';
-import Calendar from "~/app/(tabs)/calendar";
-import Calculator from "~/app/(tabs)/calculator";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { useColorScheme } from "nativewind";
-import { StatusBar } from "expo-status-bar";
-import AppSafeArea from "~/components/AppSafeArea";
+
 
 
 export default function TabLayout() {

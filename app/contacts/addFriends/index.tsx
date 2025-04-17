@@ -6,15 +6,12 @@ import {
   Platform,
   View,
   Text,
-  Alert,
   SectionList,
-  Image,
   TextInput,
   Keyboard,
   TouchableOpacity,
   KeyboardAvoidingView,
   Animated,
-  Pressable, Button,
 } from 'react-native';
 import { ContactItem } from './ContactItem';
 
@@ -28,7 +25,6 @@ type Contact = {
 
 export default function Page() {
   const params = useLocalSearchParams();
-  console
   const [query, setQuery] = useState('');
   const sectionListRef = useRef<SectionList>(null);
   const [isSearching, setIsSearching] = useState(false);
@@ -115,7 +111,7 @@ export default function Page() {
   }).current;
 
   return (
-    <>
+    <View className={'bg-white'}>
       <Stack.Screen
         options={{
           title: 'Contacts',
@@ -134,7 +130,7 @@ export default function Page() {
       />
       <StatusBar style={Platform.OS === 'ios' ? 'dark' : 'auto'} />
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-        <View className="h-14 flex-row items-center border-b border-black/5 bg-white px-4 py-2">
+        <View className="h-14 flex-row items-center bg-white px-4 py-2">
           <Animated.View style={{ flex: inputFlex }} className={isSearching ? 'mr-3' : ''}>
             <TextInput
               placeholder="Search contacts"
@@ -178,25 +174,27 @@ export default function Page() {
         ref={sectionListRef}
         sections={groupedContacts}
         keyExtractor={(item, index) => `${item.name}-${item.phoneNumber}-${index}`}
-        stickySectionHeadersEnabled={false}
         onViewableItemsChanged={onViewableItemsChanged}
         viewabilityConfig={viewabilityConfig}
         renderItem={({ item }) => (
-            <ContactItem
-              name={item.name}
-              phoneNumber={item.phoneNumber}
-              email={item.email}
-              image={item.image}
-              activePopoverId={activePopoverId}
-              setActivePopoverId={setActivePopoverId}
-            />
+          <ContactItem
+            name={item.name}
+            phoneNumber={item.phoneNumber}
+            email={item.email}
+            image={item.image}
+            activePopoverId={activePopoverId}
+            setActivePopoverId={setActivePopoverId}
+          />
         )}
         renderSectionHeader={({ section: { title } }) => (
-          <Text className="border-b border-black/10 bg-white px-4 text-lg font-bold z-20">{title}</Text>
+          <Text className="z-20 border-b border-black/5 bg-white/95 px-4 text-lg font-bold">
+            {title}
+          </Text>
         )}
         contentContainerStyle={{ backgroundColor: 'white' }}
+        stickySectionHeadersEnabled
       />
-      <View className="absolute right-0 top-20 pr-2">
+      <View className="-translate-y-1/2' absolute right-3 top-1/2 transform">
         {groupedContacts.map((section, index) => (
           <TouchableOpacity
             key={section.title}
@@ -207,15 +205,10 @@ export default function Page() {
                 animated: true,
               });
             }}>
-            <Text
-              className={`text-xs font-bold ${
-                activeLetter === section.title ? 'text-blue-500' : 'text-gray-400'
-              } py-1`}>
-              {section.title}
-            </Text>
+            <Text className={`py-1 text-xs font-bold text-gray-400`}>{section.title}</Text>
           </TouchableOpacity>
         ))}
       </View>
-    </>
+    </View>
   );
 }
